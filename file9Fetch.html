@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json Dos - Fetch API</title>
+</head>
+<body>
+    <div>
+        <div id="contenido">
+
+        </div>
+    </div>
+    <script>
+        var contenido = document.getElementById("contenido");
+        var listaPersonajes = [];
+        function traer(){
+            fetch("https://rickandmortyapi.com/api/character/1,10")
+            .then(res => res.json())
+            .then(data => {
+                //console.log(data)
+                for(let objeto of data){ 
+                    //console.log(personaje)
+                    listaPersonajes.push(objeto)
+                }
+                
+            })
+            
+        }
+        traer();
+        function mostrarPersonajes (){
+            console.log(listaPersonajes)
+            console.log(listaPersonajes[0])
+            for(let personaje in listaPersonajes){
+                console.log(personaje)
+            }
+            /* for(let i = 0 ; i < listaPersonajes.length; i++){
+                let personaje = personajes[i];
+                console.log(personaje)
+                contenido.innerHTML = `Nombre: ${personaje.name} `
+            } */
+        }
+        mostrarPersonajes()
+        
+        
+    </script>
+</body>
+</html>

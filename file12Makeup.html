@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Makeup web</title>
+    <style>
+        body{
+            
+            background-image: linear-gradient(90deg,#a9f1df, #ffbbbb);
+           background-color: #ffbbbb;
+        };
+        header{
+            background-color: #454545;
+            color:burlywood;
+        }
+        /* .overflow{
+            overflow-y:scroll;
+            overflow-x: auto;
+            height:200px;
+        } */
+        .card img{
+            height: 300px;;
+        }
+        .card{
+            height: 500px;
+        }
+        .titulo{
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body class="background" data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
+    <!--Header-->
+    <header class="mt-4 p-5 text-white rounded" style="background-color:#454545 ;">
+       <h1>MakeUP WEB</h1>
+       <nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="background-color:#454545 ;">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link" href="#titulo">Link 1</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#productos">Link 2</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Link 3</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="text" placeholder="Search">
+                    <button class="btn btn-danger" type="button">Search</button>
+                </form>
+            </div>
+      </nav>
+    </header>
+    <!--Título -->
+    <div id="titulo" class="container-fluid bg-light" style="padding:100px 20px;">
+        <h2 class="text-center">Vegan Products</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card col-lg-4" style="width:200px; height:200px;">
+                    <img class="card-img-top titulo" src="https://i.pinimg.com/originals/f0/8b/86/f08b86b79a54fb949fb0998d1461565f.png" alt="Card image" style="width:180px ;height:140px;">
+                    <div class="card-body">
+                        <h4 class="card-title">Vegan</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+                <div class="card col-lg-4" style="width:200px; height:200px;">
+                    <img class="card-img-top titulo" src="https://i.pinimg.com/originals/f0/8b/86/f08b86b79a54fb949fb0998d1461565f.png" alt="Card image" style="width:180px ;height:140px;">
+                    <div class="card-body">
+                        <h4 class="card-title">Cruelty Free</h4>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <!--Productos-->
+    <div class="container-fluid" id="productos" style="padding:100px 20px;">
+        <div class="row">
+            <div id="contenido"></div>
+        </div>
+    </div>
+    
+    
+    <script>
+        var contenido 
+        var tarjetas = [];
+
+        function traerApi(){
+            fetch("https://makeup-api.herokuapp.com/api/v1/products.json?product_tags=vegan")
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    mostrarProductos(data);  
+            });
+        };
+        traerApi();
+        function mostrarProductos(data){
+            contenido =`
+            <div class="album py-5 ">
+                <div class="container">
+                    <div class="row">`;
+            for(let producto of data){
+                contenido +=
+                        `<div class="col col-md-4 col-lg-3">
+                            <div class="card  mb-4" >
+                                <a href=${producto.product_link} target="_blank"><img class="card-img-top" src="${producto.image_link}" alt="${producto.name}"></a>
+                                <div class="card-body">
+                                    <h5 class="card-title">${producto.name}</h5>
+                                    <p class="card-text overflow">U$S ${producto.price}</p>
+                                    <a href=${producto.website_link}  class="btn btn-danger btn-lg btn-block" target="_blank">Ver Producto</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100 d-none d-sm-block d-md-none"><!-- wrap every 2 on sm--></div>`
+            };
+            contenido += 
+            `       </div>
+                </div>
+            </div>` 
+            document.getElementById("contenido").innerHTML = contenido;          
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</body>
+</html>

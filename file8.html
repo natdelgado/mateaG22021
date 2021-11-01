@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+<body>
+    <script>
+        const get_options = {
+            method: 'GET',
+            headers:{
+                'content-Type':'application/jason'
+            }
+        }
+        const user = {
+            "username": "Adiiii",
+            "first_name": "first_name",
+            "last_name": "last_name",
+            "email": "user@example.com",
+            "is_active": true,
+            "date_joined": "2021-10-27 16:52:05",
+            "last_login": null
+        }
+        const post_options ={
+            method: 'POST',
+            headers:{
+                'content-Type':'application/jason'
+            }, 
+            body:JSON.stringify(user)
+        }
+        
+        function getUsers(){
+            fetch("http://api.larntech.net/users/?format=json", get_options).then(response =>{
+                if(response.ok){
+                    console.log("Anda", response.status);
+                    return response.json();
+                } else{
+                    console.log("No anda", response.status);
+                    switch(response.status){
+                        case 400:
+                            throw new Error("No se encontró el objeto");
+                        break
+                    }
+                }
+            }).then(data =>{
+                console.log("data", data)
+            }).catch(err =>{
+                console.log("Error", err.mesage);
+            })
+        }
+        function postUser(){
+            fetch("http://api.larntech.net/users/?format=json", post_options).then(response =>{
+                if(response.ok){
+                    console.log("Anda", response.status);
+                    return response.json();
+                } else{
+                    console.log("No anda", response.status);
+                    switch(response.status){
+                        case 400:
+                            throw new Error("No se encontró el objeto");
+                        break
+                    }
+                }
+            }).then(data =>{
+                console.log("data", data)
+            }).catch(err =>{
+                console.log("Error", err.mesage);
+            })
+        }
+        getUsers();
+        postUser();
+    </script>
+</body>
+</html>

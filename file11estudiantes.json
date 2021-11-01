@@ -1,0 +1,12 @@
+[
+    {"nombre":"Alan", "edad": 109 , "curso":"Criptografia" },
+    {"nombre":"Mark", "edad": 37, "curso": "React Native"},
+    {"nombre":"Linus", "edad": 51, "curso": "Bash"},
+    {"nombre":"Ada", "edad": 205, "curso": "Algoritmos"},
+    {"nombre":"Grace", "edad": 115, "curso": "Cobol"},
+    {"nombre":"Steve", "edad": 66, "curso": "Tipografía"},
+    {"nombre":"Bill", "edad": 66, "curso": "Ofimática-Word"},
+    {"nombre":"Jeff", "edad": 57, "curso": "Comercio Internacional"},
+    {"nombre":"Jean", "edad": 93, "curso": "Programación"},
+    {"nombre":"Margaret", "edad": 35, "curso": "Astronomía"}
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "nombre": "El señor de los anillos: La comunidad del anillo",
+        "Director": "Peter Jackson",
+        "Distribuidora": "Warner"
+    },
+    {
+        "id": 2,
+        "nombre": "El señor de los anillos: Las dos torres",
+        "Director": "Peter Jackson",
+        "Distribuidora": "Warner"
+    },
+    {
+        "id": 3,
+        "nombre": "El señor de los anillos: El retorno del rey",
+        "Director": "Peter Jackson",
+        "Distribuidora": "Warner"
+    },
+    {
+        "id": 4,
+        "nombre": "El hobbit: Un viaje inesperado",
+        "Director": "Peter Jackson",
+        "Distribuidora": "Warner"
+    },
+    {
+        "id": 5,
+        "nombre": "El hobbit: La desolación de Smaug",
+        "Director": "Peter Jackson",
+        "Distribuidora": "Warner"
+    },
+    {
+        "id": 6,
+        "nombre": "El hobbit: La batalla de los cinco ejércitos",
+        "Director": "Peter Jackson",
+        "Distribuidora": "Warner"
+    }
+]

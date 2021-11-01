@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Dogs</title>
+    <style>
+        body{
+            background-image: linear-gradient(45deg,#a9f1df, #ffbbbb);
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>API Dogs</h1>
+    </header>
+    <main>
+        <div id="contenido"></div>
+        <img src="" alt="">
+        <input type="button" value="JSON Get" onclick="jget()"/>
+    </main>
+    <script>
+        var contenido = document.getElementById("contenido");
+        function traer(){
+            fetch("http://makeup-api.herokuapp.com/api/v1/products.json?brand=covergirl&product_type=lipstick")
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    contenido.innerHTML = `Producto ${data[0].name} <br> <img src="${data[0].image_link}" alt="${data[0].name}"> `
+                });
+        };
+        traer();
+        /* //Damian Método.
+        const payload = JSON.stringify(datos);
+				const envio = { method: "POST", body:payload, headers: {"Content-type": "application/json"}};
+				const res = await fetch(urpApi, envio);
+				const respuesta = await res.json();				
+				return respuesta; */
+         
+        function traerJson () {
+            // (A) FETCH REQUEST
+            fetch("http://makeup-api.herokuapp.com/api/v1/products.json?brand=covergirl&product_type=lipstick")
+            
+            // (B) RETURN SERVER RESPONSE AS TEXT
+            .then((result) => {
+                console.log(result);
+                if (result.status != 200) { throw new Error("Bad Server Response"); }
+                return result.json();
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            
+            // (C) HANDLE ERROR
+            .catch((error) => { console.log(error); });
+        }
+
+ 
+    </script>
+    
+
+</body>
+</html>
